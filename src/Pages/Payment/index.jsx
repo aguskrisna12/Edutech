@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-
 function Payment() {
 
   const [showAtm, setShowAtm] = useState(true)

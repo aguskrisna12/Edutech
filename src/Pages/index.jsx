@@ -6,8 +6,8 @@ import Login from "../Components/Login";
 import ListCheckout from "./ListCheckout";
 import Payment from "./Payment";
 import VerifikasiPayment from "./VerifikasiPayment";
-
-
+import { Provider } from "react-redux";
+import store from '../Components/Store/index'
 
 
 
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                 element: <Login/>
             },
             {
-                path: 'list-checkout',
+                path: 'list-checkout/',
                 element: <ListCheckout/>
             },
             {
@@ -46,7 +46,10 @@ const router = createBrowserRouter([
 
 function Router() {
   return (
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+        <RouterProvider router={router}/>
+    </Provider>
+    
   )
 }
 

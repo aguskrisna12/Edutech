@@ -2,9 +2,17 @@ import { Link } from "react-router-dom";
 import Bca from "../../Components/Bca";
 import Bni from "../../Components/Bni";
 import Mandiri from "../../Components/Mandiri";
+import { useState } from "react";
 
 
 function ListCheckout() {
+
+    const [selectedValue, setSelectedValue] = useState('');
+
+    const handleRadioChange = (event) => {
+        setSelectedValue(event.target.value);
+      };
+      console.log(selectedValue)
     return (
         <div className="bg-[#EFF4FA]">
             <div className="text-neutral-900 text-[28px] font-bold leading-loose p-5 pl-10">Checkout</div>
@@ -16,9 +24,9 @@ function ListCheckout() {
                         <p className="text-zinc-500 text-xs font-normal leading-tight">Pembayaran melalui Bank Transfer Mandiri atau BCA. Metode bayar ini memerlukan verifikasi pembayaran manual melalui Whatsapp</p>
                         <div className="w-[489px] h-[90px] py-2 border-b border-neutral-300" />
                     </div>
-                    <Mandiri />
-                    <Bca />
-                    <Bni />
+                    <Mandiri selectedValue={selectedValue} handleRadioChange={handleRadioChange}/>
+                    <Bca selectedValue={selectedValue} handleRadioChange={handleRadioChange}/>
+                    <Bni selectedValue={selectedValue} handleRadioChange={handleRadioChange}/>
                 </div>
                 <div className="w-[715px] h-[800px] bg-[#FFFFFF] pt-[45px] px-[65px] pb-[52px] rounded-[20px] mb-8">
                 <div className="text-neutral-900 text-xl font-bold leading-7">Ringkasan Pesanan</div>
@@ -40,7 +48,7 @@ function ListCheckout() {
                     </div>
                     <div className="mt-5">
                         <p className="text-neutral-900 text-sm font-extrabold leading-[14px] py-4">Metode Pembayaran</p>
-                        <p className="text-neutral-900 text-sm font-semibold leading-[14px]">Bank Transfer (verifikasi manual)-Mandiri</p>
+                        <p className="text-neutral-900 text-sm font-semibold leading-[14px]">Bank Transfer (verifikasi manual) : {selectedValue ? selectedValue : 'Mohon klik Bank transfer'}</p>
                     </div>
                     <div className="mt-9">
                         <div className="pb-[6px] text-neutral-900 text-sm font-extrabold leading-[14px]">Ringkasan Pembayaran</div>
