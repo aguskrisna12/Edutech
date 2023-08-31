@@ -29,11 +29,11 @@ const router = createBrowserRouter([
                 element: <Login/>
             },
             {
-                path: 'list-checkout/',
+                path: 'list-materi/:id/list-checkout/:id',
                 element: <ListCheckout/>
             },
             {
-                path: 'payment',
+                path: 'list-materi/:id/list-checkout/:id/payment/:id',
                 element: <Payment/>
             },
             {

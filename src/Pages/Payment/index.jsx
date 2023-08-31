@@ -1,10 +1,26 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
+import { useParams } from "react-router"
 
 function Payment() {
 
+  const { id } = useParams()
   const [showAtm, setShowAtm] = useState(true)
   const [showInet, setShowInet] = useState(false)
   const [showMobileBanking, setShowMobileBanking] = useState(false)
+
+
+  const { entities } = useSelector((state) => state.content)
+  const newEntities = [...entities]
+
+  const filterCard = newEntities.filter(item => item.id === Number(id))[0]
+  console.log(filterCard)
+
+  const filterParagf = filterCard.paragf.slice(1, filterCard.paragf.length - 1)
+
+  const { totalPembayaran } = useSelector((state) => state.content)
+  const { radioValue } = useSelector((state) => state.content)
+  // console.log(radioValue)
 
   const handleShowAtm = () => {
     setShowInet(false)
@@ -37,15 +53,15 @@ function Payment() {
               <img src="/assets/img/person.png" className="w-[68.99px] h-[91.41px]" alt="img" />
             </div>
             <div className="w-[314px] pl-4 pt-1">
-              <span className="text-black text-xl font-extrabold leading-[25px]">Programming Laravel<br /></span>
-              <span className="text-black text-[17px] font-extrabold leading-[25px]">Getting Started with Laravel 9</span>
-              <p className="pt-[7px] text-[#00000080] text-[12px] font-[600]">Batch <span>8</span></p>
-              <p className="text-[#00000080] text-[12px] font-[600]">Mentor anonimus</p>
+              <span className="text-black text-xl font-extrabold leading-[25px]">{filterCard.title}<br /></span>
+              <span className="text-black text-[17px] font-extrabold leading-[25px]">{filterParagf}</span>
+              <p className="pt-[7px] text-[#00000080] text-[12px] font-[600]">Batch <span>{filterCard.batch}</span></p>
+              <p className="text-[#00000080] text-[12px] font-[600]">Mentor {filterCard.mentor}</p>
             </div>
           </div>
           <div className="mt-5 pl-10">
             <p className="text-neutral-900 text-sm font-extrabold leading-[14px] py-4">Metode Pembayaran</p>
-            <p className="w-[417px] text-zinc-500 text-base font-normal leading-normal">Bank Transfer (verifikasi manual)-Mandiri</p>
+            <p className="w-[417px] text-zinc-500 text-base font-normal leading-normal">Bank Transfer (verifikasi manual) : {radioValue}</p>
           </div>
           <div className="w-[319px] h-[45px] mt-2 relative">
             <div className="w-[300px] h-[45px] left-[102px] top-0 absolute">
@@ -55,7 +71,7 @@ function Payment() {
             <img className="w-[72px] h-[21.18px] ml-10 left-0 top-[12px] absolute" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" alt="img" />
           </div>
           <div className="w-[300px] mt-5 pl-10 text-zinc-500 text-base font-normal leading-normal">Nominal yang harus dibayar senilai:</div>
-          <div className="w-[277.82px] mt-5 pl-10 text-neutral-900 text-2xl font-semibold leading-7">Rp. 500.000</div>
+          <div className="w-[277.82px] mt-5 pl-10 text-neutral-900 text-2xl font-semibold leading-7">Rp. {totalPembayaran}</div>
         </div>
         <div className="pt-9">
           <div className="w-[395px] h-[81px] relative">

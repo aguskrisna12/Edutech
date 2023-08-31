@@ -1,18 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Bca from "../../Components/Bca";
 import Bni from "../../Components/Bni";
 import Mandiri from "../../Components/Mandiri";
+import { useDispatch, useSelector } from "react-redux";
+import { getValueRadio } from "../../Components/Store/Product/reducer";
 import { useState } from "react";
-
 
 function ListCheckout() {
 
-    const [selectedValue, setSelectedValue] = useState('');
+    const { id } = useParams()
+    // console.log(id) 
+    const [selectedValue, setSelectedValue] = useState('')
 
-    const handleRadioChange = (event) => {
-        setSelectedValue(event.target.value);
-      };
-      console.log(selectedValue)
+    const { hargaKelas } = useSelector((state) => state.content)
+    const { potongan } = useSelector((state) => state.content)
+    const { promo } = useSelector((state) => state.content)
+    const { kodeUnik } = useSelector((state) => state.content)
+    const { totalPembayaran } = useSelector((state) => state.content)
+    const { radioValue } = useSelector((state) => state.content)
+
+    const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+    
+    const { entities } = useSelector((state) => state.content)
+    const newEntities = [...entities]
+
+    const filterCard = newEntities.filter(item => item.id === Number(id))[0]
+    // console.log(filterCard)
+
+    const filterParagf = filterCard.paragf.slice(1, filterCard.paragf.length - 1)
+    // console.log(filterParagf)
+
+    // console.log(selectedValue)
+    
+    const handleRadioChange = (e) => {
+        setSelectedValue(e.target.value)
+    }
+
+    dispatch(getValueRadio(selectedValue))
+
+    const goTo = (id) => {
+        navigate(`./payment/${id}`)
+    }
+
+    
+    console.log(radioValue)
+
     return (
         <div className="bg-[#EFF4FA]">
             <div className="text-neutral-900 text-[28px] font-bold leading-loose p-5 pl-10">Checkout</div>
@@ -35,10 +69,10 @@ function ListCheckout() {
                             <img src="/assets/img/person.png" className="w-[68.99px] h-[91.41px]" alt="img" />
                         </div>
                         <div className="w-[314px] pl-4 pt-1">
-                            <span className="text-black text-xl font-extrabold leading-[25px]">Programming Laravel<br /></span>
-                            <span className="text-black text-[17px] font-extrabold leading-[25px]">Getting Started with Laravel 9</span>
-                            <p className="pt-[7px] text-[#00000080] text-[12px] font-[600]">Batch <span>8</span></p>
-                            <p className="text-[#00000080] text-[12px] font-[600]">Mentor anonimus</p>
+                            <span className="text-black text-xl font-extrabold leading-[25px]">{filterCard.title}<br /></span>
+                            <span className="text-black text-[17px] font-extrabold leading-[25px]">{filterParagf}</span>
+                            <p className="pt-[7px] text-[#00000080] text-[12px] font-[600]">Batch <span>{filterCard.batch}</span></p>
+                            <p className="text-[#00000080] text-[12px] font-[600]">{filterCard.mentor}</p>
                         </div>
                     </div>
                     <div className="w-100">
@@ -48,37 +82,37 @@ function ListCheckout() {
                     </div>
                     <div className="mt-5">
                         <p className="text-neutral-900 text-sm font-extrabold leading-[14px] py-4">Metode Pembayaran</p>
-                        <p className="text-neutral-900 text-sm font-semibold leading-[14px]">Bank Transfer (verifikasi manual) : {selectedValue ? selectedValue : 'Mohon klik Bank transfer'}</p>
+                        <p className="text-neutral-900 text-sm font-semibold leading-[14px]">Bank Transfer (verifikasi manual) : {radioValue ? radioValue : 'Mohon klik Bank transfer'}</p>
                     </div>
                     <div className="mt-9">
                         <div className="pb-[6px] text-neutral-900 text-sm font-extrabold leading-[14px]">Ringkasan Pembayaran</div>
                         <div className="flex pt-[8px] justify-between w-[530px]">
                             <p>Harga Kelas</p>
-                            <p>Rp. 700.000</p>
+                            <p>Rp. {hargaKelas}</p>
                         </div>
                         <div className="flex pt-[8px] justify-between w-[530px]">
                             <p>Potongan</p>
-                            <p>Rp. 200.000</p>
+                            <p>Rp. {potongan}</p>
                         </div>
                         <div className="flex pt-[8px] justify-between w-[530px]">
                             <p>Promo</p>
-                            <p>-</p>
+                            <p>{promo}</p>
                         </div>
                         <div className="flex pt-[8px] justify-between w-[530px]">
                             <p>Kode Unik</p>
-                            <p>-</p>
+                            <p>{kodeUnik}</p>
                         </div>
                         <div className="w-[530px] h-[0px] my-4 bg-white border border-neutral-300"></div>
                         <div className="flex pt-[8px] justify-between w-[530px]  text-neutral-900 text-sm font-extrabold leading-[14px]">
                             <p>Total Pembayaran</p>
-                            <p>Rp.500.000</p>
+                            <p>Rp.{totalPembayaran}</p>
                         </div>
                     </div>
                     <div className="mt-3  w-[530px] font-normal text-sm">
                         <p>Dengan menekan tombol <span className="text-neutral-900 text-sm font-bold leading-tight">Bayar</span> kamu telah menyetujui syarat dan ketentuan yang berlaku, silahkan baca kembali <Link className="text-sky-500 text-sm font-bold underline leading-tight" to={'#'}>Syarat & ketentuan</Link> yang berlaku.</p>
                     </div>
                     <div className="flex justify-end pt-10">
-                        <button class="rounded-full h-12 w-[205px] text-white bg-[#2A61A8]">Save Changes</button>
+                        <button onClick={() => goTo(id)} class="rounded-full h-12 w-[205px] text-white bg-[#2A61A8]">Save Changes</button>
                     </div>
                 </div>
             </div>
