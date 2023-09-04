@@ -3,7 +3,7 @@ import Bca from "../../Components/Bca";
 import Bni from "../../Components/Bni";
 import Mandiri from "../../Components/Mandiri";
 import { useDispatch, useSelector } from "react-redux";
-import { getValueRadio } from "../../Components/Store/Product/reducer";
+import { getValueLogo, getValueRadio } from "../../Components/Store/Product/reducer";
 import { useState } from "react";
 
 function ListCheckout() {
@@ -11,6 +11,8 @@ function ListCheckout() {
     const { id } = useParams()
     // console.log(id) 
     const [selectedValue, setSelectedValue] = useState('')
+    const [srcImg, setSrcImg] = useState('')
+    const [input, setInput] = useState('')
 
     const { hargaKelas } = useSelector((state) => state.content)
     const { potongan } = useSelector((state) => state.content)
@@ -18,6 +20,7 @@ function ListCheckout() {
     const { kodeUnik } = useSelector((state) => state.content)
     const { totalPembayaran } = useSelector((state) => state.content)
     const { radioValue } = useSelector((state) => state.content)
+    const { logoBank } = useSelector((state) => state.content)
 
     const navigate = useNavigate()
 
@@ -34,18 +37,34 @@ function ListCheckout() {
 
     // console.log(selectedValue)
     
-    const handleRadioChange = (e) => {
+    const handleRadioChange = (e, ...param) => {
         setSelectedValue(e.target.value)
+        setSrcImg(param[0])
     }
 
+    
+    dispatch(getValueLogo(srcImg))
     dispatch(getValueRadio(selectedValue))
 
+    const handleChange = (e) => {
+        setInput(e.target.value)
+    }
+
+    const handleSubmit = () => {
+        setInput('')
+        alert('Tidak ada kode promo saat ini')
+    }
+
     const goTo = (id) => {
+        if(!srcImg){
+            alert('mohon klik Bank transfer')
+            return
+        }
         navigate(`./payment/${id}`)
     }
 
     
-    console.log(radioValue)
+    console.log(logoBank)
 
     return (
         <div className="bg-[#EFF4FA]">
@@ -77,8 +96,8 @@ function ListCheckout() {
                     </div>
                     <div className="w-100">
                         <div className="text-neutral-900 pb-2 text-sm font-extrabold leading-tight">Kode Promo</div>
-                        <input className="w-[420px] h-[54px] pl-3 pr-2.5 py-2.5 bg-white rounded-tl rounded-bl border border-gray-400 justify-start items-center gap-2.5 inline-flex" placeholder="Masukan Kode Promo"/>
-                        <button className="ml-1 text-white w-[108px] h-[54px] px-4 py-2.5 bg-[#2A61A8] rounded-tr rounded-br border border-gray-400 flex-col justify-center items-center gap-2.5 inline-flex">Terapkan</button>
+                        <input value={input} onChange={handleChange} className="w-[420px] h-[54px] pl-3 pr-2.5 py-2.5 bg-white rounded-tl rounded-bl border border-gray-400 justify-start items-center gap-2.5 inline-flex" placeholder="Masukan Kode Promo"/>
+                        <button onClick={handleSubmit} className="ml-1 text-white w-[108px] h-[54px] px-4 py-2.5 bg-[#2A61A8] rounded-tr rounded-br border border-gray-400 flex-col justify-center items-center gap-2.5 inline-flex">Terapkan</button>
                     </div>
                     <div className="mt-5">
                         <p className="text-neutral-900 text-sm font-extrabold leading-[14px] py-4">Metode Pembayaran</p>
@@ -112,7 +131,7 @@ function ListCheckout() {
                         <p>Dengan menekan tombol <span className="text-neutral-900 text-sm font-bold leading-tight">Bayar</span> kamu telah menyetujui syarat dan ketentuan yang berlaku, silahkan baca kembali <Link className="text-sky-500 text-sm font-bold underline leading-tight" to={'#'}>Syarat & ketentuan</Link> yang berlaku.</p>
                     </div>
                     <div className="flex justify-end pt-10">
-                        <button onClick={() => goTo(id)} class="rounded-full h-12 w-[205px] text-white bg-[#2A61A8]">Save Changes</button>
+                        <button onClick={() => goTo(id)} className="hover:bg-[#224B80] rounded-full h-12 w-[205px] text-white bg-[#2A61A8]">Save Changes</button>
                     </div>
                 </div>
             </div>

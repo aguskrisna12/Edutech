@@ -16,12 +16,15 @@ export const dataSlice = createSlice({
     reducers: {
         getValueRadio(state, action){
             state.radioValue = action.payload
+        },
+        getValueLogo(state, action) {
+            state.logoBank = action.payload
         }
 
     }
 })
 
 
-export const { getValueRadio } = dataSlice.actions
+export const { getValueRadio, getValueLogo } = dataSlice.actions
 
 export default dataSlice.reducer

@@ -20,7 +20,11 @@ function Payment() {
 
   const { totalPembayaran } = useSelector((state) => state.content)
   const { radioValue } = useSelector((state) => state.content)
-  // console.log(radioValue)
+  const { logoBank } = useSelector((state) => state.content)
+
+  console.log(radioValue)
+  
+  
 
   const handleShowAtm = () => {
     setShowInet(false)
@@ -40,9 +44,12 @@ function Payment() {
     setShowMobileBanking(!showMobileBanking)
   }
 
-  const listAtm = ['Masukan kartu ke mesin ATM Mandiri', 'Pilih Bahasa', 'Masukkan PIN ATM', 'Pilih menu transaksi lainnya', 'Pilih menu Transfer Mandiri', 'Masukkan no rekening yang dituju', 'Masukkan nominal jumlah uang', 'Jika benar pilih YA', 'Selesai, struk akan keluar dari mesin ATM']
-  const ListInet = ['Login ke ib.bankmandiri.co.id', 'Masukkan User ID dan PIN internet banking', 'Klik menu transfer dana', 'Masukkan nominal transfer, kemudian isi nomor rekening tujuan', 'klik Lanjutkan, kemudian gunakan token Mandiri untuk proses otorisasi (ikuti instruksi selanjutnya yang tertera)', 'Jika selesai segera logout']
-  const listMobile = ['Login ke akun kamu dengan memasukkan User ID dan PIN mobile banking', 'Pilih menu Transfer', 'Masukkan kode bank tujuan diikuti nomor rekening tujuan', 'Masukkan nominal transfer', 'Masukkan PIN Mandiri Mobile kamu untuk proses otorisasi']
+  const lowerCaseBank = radioValue.toLowerCase()
+  console.log(lowerCaseBank)
+
+  const listAtm = [`Masukan kartu ke mesin ATM ${radioValue}`, 'Pilih Bahasa', 'Masukkan PIN ATM', 'Pilih menu transaksi lainnya', `Pilih menu Transfer ${radioValue}`, 'Masukkan no rekening yang dituju', 'Masukkan nominal jumlah uang', 'Jika benar pilih YA', 'Selesai, struk akan keluar dari mesin ATM']
+  const ListInet = [`Login ke ${lowerCaseBank}.co.id`, 'Masukkan User ID dan PIN internet banking', 'Klik menu transfer dana', 'Masukkan nominal transfer, kemudian isi nomor rekening tujuan', `klik Lanjutkan, kemudian gunakan token ${radioValue} untuk proses otorisasi (ikuti instruksi selanjutnya yang tertera)`, 'Jika selesai segera logout']
+  const listMobile = ['Login ke akun kamu dengan memasukkan User ID dan PIN mobile banking', 'Pilih menu Transfer', 'Masukkan kode bank tujuan diikuti nomor rekening tujuan', 'Masukkan nominal transfer', `Masukkan PIN ${radioValue} Mobile kamu untuk proses otorisasi`]
   return (
     <div className="bg-[#EFF4FA]">
       <div className="text-neutral-900 text-[28px] pl-10 py-5 font-bold leading-loose">Instruksi Bayar</div>
@@ -65,10 +72,10 @@ function Payment() {
           </div>
           <div className="w-[319px] h-[45px] mt-2 relative">
             <div className="w-[300px] h-[45px] left-[102px] top-0 absolute">
-              <div className="left-10 top-0 absolute text-neutral-900 text-base font-semibold leading-tight">No Rek. 137000299089</div>
-              <div className="left-10 top-[25px] absolute text-zinc-500 text-base font-medium leading-tight">a.n. PT Widya Kreasi Bangsa</div>
+              <div className="left-10 top-0 absolute text-neutral-900 text-base font-semibold leading-tight">No Rek. {radioValue === 'Mandiri' ? '999000765' : radioValue === 'BCA' ? '8880007645' : '7770098734'}</div>
+              <div className="left-10 top-[25px] absolute text-zinc-500 text-base font-medium leading-tight">a.n. Agus Krisna</div>
             </div>
-            <img className="w-[72px] h-[21.18px] ml-10 left-0 top-[12px] absolute" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" alt="img" />
+            <img className="w-[72px] h-[21.18px] ml-10 left-0 top-[12px] absolute" src={logoBank} alt="img" />
           </div>
           <div className="w-[300px] mt-5 pl-10 text-zinc-500 text-base font-normal leading-normal">Nominal yang harus dibayar senilai:</div>
           <div className="w-[277.82px] mt-5 pl-10 text-neutral-900 text-2xl font-semibold leading-7">Rp. {totalPembayaran}</div>

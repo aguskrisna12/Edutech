@@ -6,7 +6,7 @@ export default function Mandiri({selectedValue, handleRadioChange}) {
                     <img className="w-[72px] h-[21.18px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png" alt="img" />
                     <span className="pl-4">Bank Transfer ke Rek Bank Mandiri</span>
                 </div>
-                <input type="radio" name="radAnswer" value='Mandiri' onChange={handleRadioChange} checked={selectedValue === 'Mandiri'}/>
+                <input type="radio" name="radAnswer" value='Mandiri' onChange={e => handleRadioChange(e, "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bank_Mandiri_logo_2016.svg/2560px-Bank_Mandiri_logo_2016.svg.png")} checked={selectedValue === 'Mandiri'} required/>
             </div>
         </>
     )

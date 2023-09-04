@@ -6,7 +6,7 @@ export default function Bca({handleRadioChange, selectedValue}) {
                     <img className="w-[72px] h-[21.18px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png" alt="img" />
                     <span className="pl-4">Bank Transfer ke Rek Bank BCA</span>
                 </div>
-                <input type="radio" name="radAnswer" value='{"value" : "BCA", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png"}' onChange={handleRadioChange} checked={selectedValue === 'BCA'}/>
+                <input type="radio" name="radAnswer" value='BCA' onChange={(e) => handleRadioChange(e, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bank_Central_Asia.svg/1200px-Bank_Central_Asia.svg.png")} checked={selectedValue === 'BCA'} required/>
             </div>
         </>
     )

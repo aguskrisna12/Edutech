@@ -1,12 +1,23 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 
 function ListDetails() {
 
   const { id } = useParams()
-  // console.log(id)
+  
+  function ScrollToTop() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+  
+    return null;
+  }
+
+  ScrollToTop()
   const { entities } = useSelector((state) => state.content)
   const newEntities = [...entities]
+
 
 
   const filterCard = newEntities.filter(item => item.id === Number(id))[0]
@@ -66,11 +77,11 @@ function ListDetails() {
             <p className="pl-[60px]">Fasilitas</p>
             <hr className="w-[320px] m-auto" />
             <div className="flex justify-between w-100 px-10 py-6">
-              <p><s>Rp. 700.000</s></p>
+              <p className="text-[red]"><s>Rp. 700.000</s></p>
               <p>Rp. 500.000</p>
             </div>
             <div className="flex justify-center w-100 pb-5">
-              <button onClick={() => goTo(id)} class="rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Save Changes</button>
+              <button onClick={() => goTo(id)} class=" hover:bg-[#EBBD28] rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Save Changes</button>
             </div>
           </div>
           <div className=" col-span-2 bg-[#FFFFFF] rounded-[20px] pl-11 pr-11 pb-11 pt-5">
@@ -95,7 +106,7 @@ function ListDetails() {
         </div>
         <div className="bg-[#152A46] w-100 h-[386px] mt-[80px] flex flex-col justify-center items-center">
           <p className="text-white text-[46px] mb-[46px] font-semibold">Sudah siap bergabung?</p>
-          <button onClick={() => navigate('/')} class="rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Daftar Kelas</button>
+          <button onClick={() => navigate('/')} class=" rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Daftar Kelas</button>
         </div>
       </div>
     </>
