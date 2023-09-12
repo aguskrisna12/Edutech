@@ -52,43 +52,43 @@ function Payment() {
   const listMobile = ['Login ke akun kamu dengan memasukkan User ID dan PIN mobile banking', 'Pilih menu Transfer', 'Masukkan kode bank tujuan diikuti nomor rekening tujuan', 'Masukkan nominal transfer', `Masukkan PIN ${radioValue} Mobile kamu untuk proses otorisasi`]
   return (
     <div className="bg-[#EFF4FA]">
-      <div className="text-neutral-900 text-[28px] pl-10 py-5 font-bold leading-loose">Instruksi Bayar</div>
-      <div className="w-[1269px] h-[420px] bg-white rounded-[20px] flex justify-between m-auto pr-[150px]">
+      <div className="text-neutral-900 md:text-[28px] text-sm md:pl-10 md:py-5 font-bold leading-loose pl-3">Instruksi Bayar</div>
+      <div className="md:w-[1269px] md:h-[420px] flex flex-col md:flex-row bg-white rounded-[20px] md:flex md:justify-between md:m-auto md:pr-[150px]">
         <div>
-          <div className="flex pt-10 pl-10">
-            <div className="w-[119px] h-[110px] bg-slate-700 rounded-[5px] flex justify-center items-center">
-              <img src="/assets/img/person.png" className="w-[68.99px] h-[91.41px]" alt="img" />
+          <div className="md:flex md:pt-10 md:pl-10 pl-3 flex">
+            <div className="md:w-[119px] w-fit md:h-[110px] bg-slate-700 rounded-[5px] md:flex md:justify-center md:items-center">
+              <img src="/assets/img/person.png" className="md:w-[68.99px] md:h-[91.41px]" alt="img" />
             </div>
-            <div className="w-[314px] pl-4 pt-1">
+            <div className="md:w-[314px] md:pl-4 md:pt-1 pl-3">
               <span className="text-black text-xl font-extrabold leading-[25px]">{filterCard.title}<br /></span>
               <span className="text-black text-[17px] font-extrabold leading-[25px]">{filterParagf}</span>
               <p className="pt-[7px] text-[#00000080] text-[12px] font-[600]">Batch <span>{filterCard.batch}</span></p>
               <p className="text-[#00000080] text-[12px] font-[600]">Mentor {filterCard.mentor}</p>
             </div>
           </div>
-          <div className="mt-5 pl-10">
-            <p className="text-neutral-900 text-sm font-extrabold leading-[14px] py-4">Metode Pembayaran</p>
-            <p className="w-[417px] text-zinc-500 text-base font-normal leading-normal">Bank Transfer (verifikasi manual) : {radioValue}</p>
+          <div className="md:mt-5 md:pl-10 mt-3 pl-3 pb-1">
+            <p className="text-neutral-900 text-sm font-extrabold leading-[14px] md:py-4">Metode Pembayaran</p>
+            <p className="md:w-[417px] text-zinc-500 text-base font-normal leading-normal">Bank Transfer (verifikasi manual) : {radioValue}</p>
           </div>
-          <div className="w-[319px] h-[45px] mt-2 relative">
-            <div className="w-[300px] h-[45px] left-[102px] top-0 absolute">
-              <div className="left-10 top-0 absolute text-neutral-900 text-base font-semibold leading-tight">No Rek. {radioValue === 'Mandiri' ? '999000765' : radioValue === 'BCA' ? '8880007645' : '7770098734'}</div>
-              <div className="left-10 top-[25px] absolute text-zinc-500 text-base font-medium leading-tight">a.n. Agus Krisna</div>
+          <div className="md:w-[319px] md:h-[45px] md:mt-2 md:relative relative">
+            <div className="md:w-[300px] md:h-[45px] md:left-[102px] absolute left-[120px] md:top-0 md:absolute">
+              <div className="md:left-10 md:top-0 md:absolute text-neutral-900 text-base font-semibold leading-tight">No Rek. {radioValue === 'Mandiri' ? '999000765' : radioValue === 'BCA' ? '8880007645' : '7770098734'}</div>
+              <div className="md:left-10 md:top-[25px] md:absolute text-zinc-500 text-base font-medium leading-tight">a.n. Agus Krisna</div>
             </div>
-            <img className="w-[72px] h-[21.18px] ml-10 left-0 top-[12px] absolute" src={logoBank} alt="img" />
+            <img className="md:w-[72px] w-[100px] ml-3 md:h-[21.18px] md:ml-10 md:left-0 md:top-[12px] md:absolute" src={logoBank} alt="img" />
           </div>
-          <div className="w-[300px] mt-5 pl-10 text-zinc-500 text-base font-normal leading-normal">Nominal yang harus dibayar senilai:</div>
-          <div className="w-[277.82px] mt-5 pl-10 text-neutral-900 text-2xl font-semibold leading-7">Rp. {totalPembayaran}</div>
+          <div className="md:w-[300px] md:mt-5 md:pl-10 mt-3 pl-3 text-zinc-500 text-base font-normal leading-normal">Nominal yang harus dibayar senilai:</div>
+          <div className="md:w-[277.82px] md:mt-5 md:pl-10 pl-3 pt-2 md:pt-0 text-neutral-900 text-2xl font-semibold leading-7">Rp. {totalPembayaran}</div>
         </div>
-        <div className="pt-9">
-          <div className="w-[395px] h-[81px] relative">
-            <div className="left-0 top-0 absolute text-neutral-900 text-xl font-bold leading-7">Instruksi Pembayaran</div>
-            <button onClick={handleShowAtm} className="left-0 top-[47px] absolute text-neutral-900 text-xl font-semibold leading-7">ATM</button>
-            <button onClick={handleShowInet} className="left-[75px] top-[47px] absolute text-neutral-900 text-xl font-semibold leading-7">Internet Banking</button>
-            <button onClick={handleShowMobile} className="left-[263px] top-[47px] absolute text-neutral-900 text-xl font-semibold leading-7">M-Banking</button>
-            <div className="w-[395px] h-[0px] left-0 top-[81px] absolute border border-neutral-300"></div>            
+        <div className="md:pt-9 pt-3 px-3 md:px-0 md:relative">
+        <div className="md:left-0 md:top-0 md:absolute text-neutral-900 md:text-xl md:pt-9 font-bold leading-7">Instruksi Pembayaran</div>
+          <div className="md:w-[395px] md:h-[81px] md:relative flex gap-x-3">
+            <button onClick={handleShowAtm} className="md:left-0 md:top-[47px] md:absolute text-neutral-900 md:text-xl font-semibold leading-7">ATM</button>
+            <button onClick={handleShowInet} className="md:left-[75px] md:top-[47px] md:absolute text-neutral-900 md:text-xl font-semibold leading-7">Internet Banking</button>
+            <button onClick={handleShowMobile} className="md:left-[263px] md:top-[47px] md:absolute text-neutral-900 md:text-xl font-semibold leading-7">M-Banking</button>
+            <div className="md:w-[370px] md:h-[0px] md:left-0 md:top-[81px] md:absolute border border-neutral-300"></div>            
           </div>
-          <div className="mt-4 w-[400px]">
+          <div className="md:mt-4 md:w-[400px] mt-1 mb-3 md:mb-0">
             <ol className="leading-7">
             {showAtm && listAtm.map((item,i) => (
               <li key={i}>{i + 1}. {item}</li>
@@ -103,10 +103,10 @@ function Payment() {
           </div>
         </div>
       </div>
-      <div className="my-3 flex justify-center">
-        <div className=" w-[1269px] h-[147px] flex flex-col items-center justify-center bg-[#2B3E58]">
-          <p className="text-white pb-4">Sudah Transfer? Lakukan verifikasi pembayaran segera!</p>
-          <button class="rounded-full h-12 w-[205px] text-white bg-[#FCBC30]">Verifikasi Pembayaran</button>
+      <div className="md:my-3 md:flex md:justify-center flex justify-center">
+        <div className="md:w-[1269px] md:h-[147px] md:flex md:flex-col md:items-center md:justify-center bg-[#2B3E58] flex flex-col w-full items-center md:pt-0 pt-3">
+          <p className="text-white md:pb-4">Sudah Transfer? Lakukan verifikasi pembayaran segera!</p>
+          <button class="rounded-full mt-3 md:mt-0 md:h-12 h-[40px] w-[200px] md:w-[205px] text-white bg-[#FCBC30]">Verifikasi Pembayaran</button>
         </div>
       </div>
     </div>
