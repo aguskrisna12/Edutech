@@ -11,7 +11,7 @@ function Header() {
       ]
     return (
         <>
-            <header className="bg-[#152A46] text-white pl-[120px] pr-[70px] py-[28px] md:flex md:justify-between md:items-center">
+            <header className="bg-[#152A46] text-white md:pl-[120px] md:pr-[70px] py-[28px] md:flex md:justify-between md:items-center">
                 <Link className="flex justify-center pb-3" to={'/'}><img src="/assets/img/logo.png" className="w-[50px] h-[50px]" alt='img' /></Link>
                 <nav>
                     <ListNavigation items={navItems} />

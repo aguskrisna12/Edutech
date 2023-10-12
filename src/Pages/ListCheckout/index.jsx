@@ -69,8 +69,8 @@ function ListCheckout() {
     return (
         <div className="bg-[#EFF4FA] px-3">
             <div className="text-neutral-900 text-sm text-[28px] font-bold leading-loose md:text-[28px] md:p-5 md:pl-10">Checkout</div>
-            <div className="md:flex md:flex-row flex flex-col md:gap-x-5 md:justify-center md:px-10">
-                <div className="md:w-[587px] md:h-[447px] bg-[#FFFFFF] md:pt-[55px] md:pl-[43px] md:pr-[55px] rounded-[20px] mb-3">
+            <div className="md:grid md:grid-cols-2 flex flex-col md:justify-center md:px-10">
+                <div className="md:w-fit md:h-fit bg-[#FFFFFF] md:pt-[55px] md:pl-[43px] md:pb-[65px] md:pr-[55px] rounded-[20px] mb-3 p-5">
                     <p className="text-neutral-900 text-xl font-bold leading-7">Pilih Metode Pembayaran</p>
                     <div className="md:w-[461px] md:h-[62px] md:mb-3 md:flex-col md:justify-start md:items-start md:gap-0.5 md:inline-flex mb-3">
                         <p className="text-neutral-900 text-sm font-semibold leading-tight">Bank Transfer(verifikasi manual)</p>
@@ -81,8 +81,8 @@ function ListCheckout() {
                     <Bca selectedValue={selectedValue} handleRadioChange={handleRadioChange}/>
                     <Bni selectedValue={selectedValue} handleRadioChange={handleRadioChange}/>
                 </div>
-                <div className="md:w-[715px] md:h-[800px] bg-[#FFFFFF] md:pt-[45px] md:px-[65px] md:pb-[52px] rounded-[20px] md:mb-8">
-                <div className="text-neutral-900 text-xl font-bold mb-3 leading-7">Ringkasan Pesanan</div>
+                <div className="md:w-fit md:h-fit bg-[#FFFFFF] md:pt-[45px] md:px-[65px] md:pb-[52px] rounded-[20px] md:mb-8 border-2 p-5 mb-3">
+                    <div className="text-neutral-900 text-xl font-bold mb-3 leading-7">Ringkasan Pesanan</div>
                     <div className="flex md:py-5">
                         <div className="md:w-[119px] md:h-[110px] bg-slate-700 md:rounded-[5px] md:flex md:justify-center md:items-center">
                             <img src="/assets/img/person.png" className="w-[80px] h-[100px] md:w-[68.99px] md:h-[91.41px]" alt="img" />
@@ -96,8 +96,8 @@ function ListCheckout() {
                     </div>
                     <div className="md:w-100">
                         <div className="text-neutral-900 md:pb-2 mt-3 mb-1 text-sm font-extrabold leading-tight">Kode Promo</div>
-                        <input value={input} onChange={handleChange} className="w-[300px] h-[40px] md:w-[420px] md:h-[54px] md:pl-3 md:pr-2.5 md:py-2.5 bg-white rounded-tl rounded-bl border border-gray-400 md:justify-start md:items-center md:gap-2.5 md:inline-flex" placeholder="Masukan Kode Promo"/>
-                        <button onClick={handleSubmit} className="h-[40px] md:ml-1 text-sm w-[100px] text-white md:w-[108px] md:h-[54px] md:px-4 md:py-2.5 bg-[#2A61A8] rounded-tr rounded-br border border-gray-400 md:flex-col md:justify-center md:items-center md:gap-2.5 md:inline-flex">Terapkan</button>
+                        <input value={input} onChange={handleChange} className="w-[250px] h-[40px] md:w-[420px] md:h-[54px] md:pl-3 md:pr-2.5 md:py-2.5 bg-white rounded-tl rounded-bl border border-gray-400 md:justify-start md:items-center md:gap-2.5 md:inline-flex" placeholder="Masukan Kode Promo"/>
+                        <button onClick={handleSubmit} className="h-[40px] md:ml-1 text-sm w-[100px] text-white md:w-fit md:h-fit md:px-4 md:py-[19px] bg-[#2A61A8] rounded-tr rounded-br border border-gray-400 md:flex-col md:justify-center md:items-center md:gap-2.5 md:inline-flex">Terapkan</button>
                     </div>
                     <div className="md:mt-5 mt-3">
                         <p className="text-neutral-900 text-sm font-extrabold leading-[20px] md:leading-[14px] md:py-4">Metode Pembayaran</p>

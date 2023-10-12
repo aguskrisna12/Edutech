@@ -70,8 +70,8 @@ function ListDetails() {
         </div>
         <img className="pr-[100px] hidden" src="/assets/img/header.png" alt="" />
       </div>
-      <div className="bg-[#EFF4FA]">
-        <div className="flex flex-col gap-y-7 md:gap-x-8 px-10 md:px-[120px] justify-center w-full md:flex md:flex-row md:pt-10">
+      <div className="bg-[#EFF4FA] px-[10%] grid sm:grid-cols-4 grid-cols-1 pb-9">
+        <div className="sm:col-span-1 flex flex-col justify-center w-full md:flex md:flex-row md:pt-10 mb-5">
           <div className="rounded-[20px] md:w-[350px] bg-[#FFFFFF] leading-loose h-[250px] mt-6">
             <p className="pl-[60px] pt-5">Materi</p>
             <p className="pl-[60px]">Fasilitas</p>
@@ -84,7 +84,9 @@ function ListDetails() {
               <button onClick={() => goTo(id)} class=" hover:bg-[#EBBD28] rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Save Changes</button>
             </div>
           </div>
-          <div className="bg-[#FFFFFF] rounded-[20px] md:w-[900px] md:mt-6 md:ml-4 pl-11 pr-11 pb-11 pt-5">
+        </div>
+        <div className="sm:col-span-3 md:w-fit md:mt-[64px] md:ml-10">
+          <div className="bg-[#FFFFFF] rounded-[20px] pl-11 pr-11 pb-11 pt-5">
             <h2 className="text-3xl pb-3">Materi</h2>
             <ol className="space-y-4 list-decimal list-inside">
               {listMateri.map((item, i) => (
@@ -96,20 +98,20 @@ function ListDetails() {
               ))}
             </ol>
           </div>
-        </div>
-        <div className="flex justify-center md:flex md:justify-end px-10 mt-4">
-          <div className="md:mr-[6%] md:w-[61%] bg-[#FFFFFF] rounded-[20px] py-4 md:pl-11 md:pr-11 md:pb-5 md:pt-5 w-full">
-            <ol className="space-y-4 list-decimal list-inside ml-9">
-              {listFasilitas.map(item => (
-                <li>{item}</li>
-              ))}
-            </ol>
+          <div className="flex justify-center md:flex mt-6">
+            <div className=" bg-[#FFFFFF] rounded-[20px] w-full py-5">
+              <ol className="space-y-4 list-decimal list-inside ml-10">
+                {listFasilitas.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ol>
+            </div>
           </div>
         </div>
-        <div className="bg-[#152A46] w-full h-[386px] mt-[80px] flex flex-col justify-center items-center">
-          <p className="text-white text-[46px] mb-[46px] text-center font-semibold">Sudah siap bergabung?</p>
-          <button onClick={() => navigate('/')} className=" rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Daftar Kelas</button>
-        </div>
+      </div>
+      <div className="bg-[#152A46] w-full h-[386px] flex flex-col justify-center items-center">
+        <p className="text-white text-[46px] mb-[46px] text-center font-semibold">Sudah siap bergabung?</p>
+        <button onClick={() => navigate('/')} className="rounded-full h-[50px] w-[250px] bg-[#FFCD29]">Daftar Kelas</button>
       </div>
     </>
   )

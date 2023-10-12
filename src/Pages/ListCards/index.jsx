@@ -15,10 +15,10 @@ function ListCards() {
     return (
         <>
             <HeaderImg />
-            <div className="py-[50px] h-max gap-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center bg-[#EFF4FA]">
+            <div className="py-[50px] px-[5%] h-max gap-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 sm:place-items-center place-items-center bg-[#EFF4FA]">
                 {entities.map((item, i) => (
-                    <section onClick={() => goTo(item.id)} key={i} className="w-[352px] cursor-pointer flex flex-wrap drop-shadow-md transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-110 duration-300">
-                        <div className="bg-[#152A46] flex rounded-t-[20px] h-[128px] w-[400px]">
+                    <section onClick={() => goTo(item.id)} key={i} className="w-[90%] cursor-pointer flex flex-wrap drop-shadow-md transition ease-in-out delay-15 hover:-translate-y-1 hover:scale-110 duration-300">
+                        <div className="bg-[#152A46] flex rounded-t-[20px] h-max w-[400px]">
                             <img src="/assets/img/person.png" className="w-[75px] h-[110px] ml-[28px] mt-[16px]" alt='img' />
                             <div>
                                 <h2 className="ml-[17px] mt-[27px] text-[16px] font-semibold text-[#FFCD29]">Insentif Bootcamp</h2>

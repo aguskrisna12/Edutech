@@ -6,7 +6,7 @@ export default function Bni({handleRadioChange, selectedValue}) {
                     <img className="w-10 h-4 md:w-[72px] md:h-[21.18px]" src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1200px-BNI_logo.svg.png" alt="img" />
                     <span className="md:pl-4 text-sm pl-4">Bank Transfer ke Rek Bank BNI</span>
                 </div>
-                <input type="radio" name="radAnswer" value='BNI' onChange={e => handleRadioChange(e, "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1200px-BNI_logo.svg.png")} checked={selectedValue === 'BNI'} required/>
+                <input className="md:ml-[140px]" type="radio" name="radAnswer" value='BNI' onChange={e => handleRadioChange(e, "https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1200px-BNI_logo.svg.png")} checked={selectedValue === 'BNI'} required/>
             </div>
         </>
     )
